@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_-z84YCrAEeWTX4slOUTAAw" elementId="org.eclipse.e4.ide.application" bindingContexts="_-z84aSrAEeWTX4slOUTAAw">
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_-z84YSrAEeWTX4slOUTAAw" label="FileBrowser_e4" width="500" height="400">
+<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_-z84YCrAEeWTX4slOUTAAw" elementId="org.eclipse.e4.ide.application">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_-z84YSrAEeWTX4slOUTAAw" label="FileBrowser_e4" width="1280" height="700">
     <children xsi:type="advanced:PerspectiveStack" xmi:id="_gZpnMCrCEeWTX4slOUTAAw" elementId="">
       <children xsi:type="advanced:Perspective" xmi:id="_iX1yMCrCEeWTX4slOUTAAw" elementId="">
         <children xsi:type="basic:PartSashContainer" xmi:id="_k6hKUCrCEeWTX4slOUTAAw" elementId="" horizontal="true">
-          <children xsi:type="basic:PartStack" xmi:id="_mwEWsCrCEeWTX4slOUTAAw" elementId="" accessibilityPhrase="" selectedElement="_qoCGwCrCEeWTX4slOUTAAw">
-            <children xsi:type="basic:Part" xmi:id="_qoCGwCrCEeWTX4slOUTAAw" elementId="" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Views.BrowserView" label="Browser"/>
+          <children xsi:type="basic:PartStack" xmi:id="_mwEWsCrCEeWTX4slOUTAAw" elementId="" containerData="2" accessibilityPhrase="" selectedElement="_qoCGwCrCEeWTX4slOUTAAw">
+            <children xsi:type="basic:Part" xmi:id="_qoCGwCrCEeWTX4slOUTAAw" elementId="" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Views.BrowserView" label="Browser">
+              <toolbar xmi:id="_GZiWYCuVEeWy090xpWpcVA" elementId="">
+                <children xsi:type="menu:HandledToolItem" xmi:id="_p2uLQCuWEeWy090xpWpcVA" elementId="filebrowser_e4.handledtoolitem.expand" label="Expand" iconURI="platform:/plugin/FileBrowser_e4/icons/expand.png" command="_kiDMoCuWEeWy090xpWpcVA"/>
+                <children xsi:type="menu:HandledToolItem" xmi:id="_LcN7MCuXEeWy090xpWpcVA" elementId="filebrowser_e4.handledtoolitem.collapse" label="Collapse" iconURI="platform:/plugin/FileBrowser_e4/icons/collapse.png" command="_GAFpsCuXEeWy090xpWpcVA"/>
+              </toolbar>
+            </children>
           </children>
-          <children xsi:type="basic:PartStack" xmi:id="_o2wusCrIEeWTX4slOUTAAw" elementId="" selectedElement="_8CDoACtOEeWy090xpWpcVA">
-            <children xsi:type="basic:Part" xmi:id="_8CDoACtOEeWy090xpWpcVA" elementId="" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Editors.TextEditor" label="TextEditor"/>
+          <children xsi:type="basic:PartSashContainer" xmi:id="_12wFECuKEeWy090xpWpcVA" elementId="" containerData="8" selectedElement="_o2wusCrIEeWTX4slOUTAAw">
+            <children xsi:type="basic:PartStack" xmi:id="_o2wusCrIEeWTX4slOUTAAw" elementId="" containerData="8"/>
+            <children xsi:type="basic:PartStack" xmi:id="_3-jTgCuUEeWy090xpWpcVA" elementId="" containerData="2" selectedElement="_6BhcYCuKEeWy090xpWpcVA">
+              <children xsi:type="basic:Part" xmi:id="_6BhcYCuKEeWy090xpWpcVA" elementId="" containerData="" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Views.ConsoleView" label="Console"/>
+            </children>
+          </children>
+          <children xsi:type="basic:PartStack" xmi:id="_38WGUCuPEeWy090xpWpcVA" elementId="" containerData="2" selectedElement="_cQ3TMCuOEeWy090xpWpcVA">
+            <children xsi:type="basic:Part" xmi:id="_cQ3TMCuOEeWy090xpWpcVA" elementId="" containerData="2" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Views.OutlineView" label="Outline"/>
           </children>
         </children>
       </children>
     </children>
     <mainMenu xmi:id="_j7eCgCtOEeWy090xpWpcVA" elementId="filebrowser_e4.menu.0">
       <children xsi:type="menu:Menu" xmi:id="_ukpnsCtOEeWy090xpWpcVA" elementId="" label="File">
-        <children xsi:type="menu:HandledMenuItem" xmi:id="_m-BNgCtOEeWy090xpWpcVA" elementId="" label="Open" command="_mmcwICtQEeWy090xpWpcVA"/>
+        <children xsi:type="menu:HandledMenuItem" xmi:id="_m-BNgCtOEeWy090xpWpcVA" elementId="" visible="false" label="Open" command="_mmcwICtQEeWy090xpWpcVA"/>
         <children xsi:type="menu:HandledMenuItem" xmi:id="_nWpI4CtOEeWy090xpWpcVA" elementId="" label="Exit" command="_8wtBQCtPEeWy090xpWpcVA"/>
       </children>
       <children xsi:type="menu:Menu" xmi:id="_v_LsACtOEeWy090xpWpcVA" elementId="" label="Help">
@@ -23,14 +34,23 @@
       </children>
     </mainMenu>
   </children>
-  <handlers xmi:id="_zjZkMCtPEeWy090xpWpcVA" elementId="" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.ExitHandler" command="_8wtBQCtPEeWy090xpWpcVA"/>
+  <handlers xmi:id="_zjZkMCtPEeWy090xpWpcVA" elementId="Exit" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.ExitHandler" command="_8wtBQCtPEeWy090xpWpcVA"/>
   <handlers xmi:id="_phbTgCtQEeWy090xpWpcVA" elementId="Open" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.OpenHandler" command="_mmcwICtQEeWy090xpWpcVA"/>
-  <rootContext xmi:id="_-z84aSrAEeWTX4slOUTAAw" elementId="org.eclipse.ui.contexts.dialogAndWindow" name="In Dialog and Windows">
-    <children xmi:id="_-z84airAEeWTX4slOUTAAw" elementId="org.eclipse.ui.contexts.window" name="In Windows"/>
-    <children xmi:id="_-z84ayrAEeWTX4slOUTAAw" elementId="org.eclipse.ui.contexts.dialog" name="In Dialogs"/>
-  </rootContext>
+  <handlers xmi:id="_mJN-wCuWEeWy090xpWpcVA" elementId="filebrowser_e4.handler.Expand" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.ExpandHandler" command="_kiDMoCuWEeWy090xpWpcVA"/>
+  <handlers xmi:id="_JKODYCuXEeWy090xpWpcVA" elementId="filebrowser_e4.handler.Collapse" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.CollapseHandler" command="_GAFpsCuXEeWy090xpWpcVA"/>
+  <bindingTables xmi:id="_b5wRMCuCEeWy090xpWpcVA" elementId="filebrowser_e4.bindingtable.Default" bindingContext="_AQyKECuCEeWy090xpWpcVA">
+    <bindings xmi:id="_hqm1gCuCEeWy090xpWpcVA" elementId="filebrowser_e4.keybinding.Exit" keySequence="M1+X" command="_8wtBQCtPEeWy090xpWpcVA">
+      <tags>type:user</tags>
+    </bindings>
+    <bindings xmi:id="_QznNwCuDEeWy090xpWpcVA" elementId="filebrowser_e4.keybinding.Open" keySequence="M1+O" command="_mmcwICtQEeWy090xpWpcVA">
+      <tags>type:user</tags>
+    </bindings>
+  </bindingTables>
+  <rootContext xmi:id="_AQyKECuCEeWy090xpWpcVA" elementId="filebrowser_e4.bindingcontext.Default" name="Default Binding Context"/>
   <commands xmi:id="_8wtBQCtPEeWy090xpWpcVA" elementId="filebrowser_e4.command.Exit" commandName="Exit"/>
   <commands xmi:id="_mmcwICtQEeWy090xpWpcVA" elementId="filebrowser_e4.command.Open" commandName="Open"/>
+  <commands xmi:id="_kiDMoCuWEeWy090xpWpcVA" elementId="filebrowser_e4.command.Expand" commandName="Expand"/>
+  <commands xmi:id="_GAFpsCuXEeWy090xpWpcVA" elementId="filebrowser_e4.command.Collapse" commandName="Collapse"/>
   <addons xmi:id="_-z84YirAEeWTX4slOUTAAw" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_-z84YyrAEeWTX4slOUTAAw" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_-z84ZCrAEeWTX4slOUTAAw" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
