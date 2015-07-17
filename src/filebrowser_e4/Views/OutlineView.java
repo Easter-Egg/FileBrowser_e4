@@ -14,6 +14,7 @@ public class OutlineView {
 	
 	private Text text;
 	
+	
 	@Inject
 	public OutlineView() {
 		

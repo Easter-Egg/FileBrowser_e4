@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
@@ -40,12 +41,16 @@ public class BrowserView {
 	@Inject
 	private ESelectionService ss;
 	@Inject
-	private EPartService partService;
+	private EPartService ps;
 	@Inject
-	private EModelService modelService;
+	private EModelService ms;
 	@Inject
-	private MWindow window;
-	
+	private MWindow w;
+
+	@Inject
+	public BrowserView(){
+		
+	}
 	
 	private IDoubleClickListener l = new IDoubleClickListener() {
 		@Override
@@ -55,7 +60,6 @@ public class BrowserView {
 			String loc = ss.getSelection().toString();
 			File file = new File(loc);
 
-			
 			Date dt = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd, H:mm:ss:SSS"); 
 			System.out.println(sdf.format(dt).toString() +  "   >>>>>   " + loc);
@@ -66,7 +70,7 @@ public class BrowserView {
 				else
 					tv.setExpandedState(file, true);
 			} else {
-				FileOpen fo = new FileOpen(ss,window,partService,modelService);
+				FileOpen fo = new FileOpen(ss, ps, ms, w);
 				fo.open();
 			}
 
