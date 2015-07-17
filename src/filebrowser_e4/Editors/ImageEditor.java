@@ -1,13 +1,20 @@
 package filebrowser_e4.Editors;
 
 import java.io.File;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.e4.ui.di.Focus;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
+import org.eclipse.e4.ui.model.application.ui.basic.MPartStack;
+import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
+import org.eclipse.e4.ui.workbench.modeling.EModelService;
 import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusEvent;
+import org.eclipse.swt.events.FocusListener;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
@@ -19,13 +26,21 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ScrollBar;
 
+import filebrowser_e4.Views.OutlineView;
+
 public class ImageEditor {
-	public ScrollBar hBar = null;
-	public ScrollBar vBar = null;
-	public Point origin = new Point (0, 0);
-	public Image image;
-	public Canvas canvas;
+	private ScrollBar hBar = null;
+	private ScrollBar vBar = null;
+	private Point origin = new Point (0, 0);
+	private Image image;
+	private Canvas canvas;
 	
+	@Inject
+	private EModelService ms;
+	
+	@Inject
+	private MWindow window;
+			
 	@Inject
 	private ESelectionService ss;
 	
@@ -35,7 +50,9 @@ public class ImageEditor {
 
 	@PostConstruct
 	public void postConstruct(Composite parent) {
+		List<MPartStack> stacks = ms.findElements(window, null, MPartStack.class, null);
 		String loc = ss.getSelection().toString();
+	
 		File file = new File(loc);
 		image = new Image(parent.getDisplay(), file.getAbsolutePath());
 		canvas = new Canvas(parent, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL | SWT.None);
@@ -114,8 +131,21 @@ public class ImageEditor {
 				origin.y = -vSel;
 			}
 		});
-	}
+		
+		canvas.addFocusListener(new FocusListener(){
 
+			@Override
+			public void focusGained(FocusEvent e) {
+				MPart mp = (MPart) stacks.get(3).getChildren().get(0);
+				OutlineView olv = (OutlineView) mp.getObject();
+				olv.getText().setText("File Name : " + file.getName() + "\nFile Size : " + file.length() + " Bytes");
+				}
+			@Override
+			public void focusLost(FocusEvent e) {
+			}
+		});
+	}
+	
 	@Focus
 	public void onFocus() {
 		canvas.setFocus();

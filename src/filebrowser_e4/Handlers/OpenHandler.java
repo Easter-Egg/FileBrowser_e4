@@ -62,7 +62,12 @@ public class OpenHandler {
 				}
 				// open image editor
 				else if(file.getName().endsWith(".jpg") || file.getName().endsWith(".png")){
-
+					MPart part = modelService.createModelElement(MPart.class);
+					part.setLabel(file.getName());
+					part.setContributionURI("bundleclass://FileBrowser_e4/filebrowser_e4.Editors.ImageEditor");
+					part.setCloseable(true);
+					stacks.get(1).getChildren().add(part);
+					partService.showPart(part, PartState.ACTIVATE);
 				}
 			}
 		} else {

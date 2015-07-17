@@ -17,5 +17,25 @@
          </property>
       </product>
    </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            describer="filebrowser_e4.Editors.TextEditor"
+            file-extensions="txt"
+            id="FileBrowser_e4.content-type.text"
+            name="text"
+            priority="normal">
+      </content-type>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <e4view
+            class="filebrowser_e4.Editors.TextEditor"
+            id="FileBrowser_e4.textEditor"
+            name="TextEditor"
+            restorable="true">
+      </e4view>
+   </extension>
 
 </plugin>
