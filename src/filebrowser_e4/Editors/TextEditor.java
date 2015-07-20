@@ -46,30 +46,28 @@ public class TextEditor {
 	public void postConstruct(Composite parent) {
 		List<MPartStack> stacks = ms.findElements(window, null, MPartStack.class, null);
 		styledText = new StyledText(parent, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
-		if(ss.getSelection() != null){
-			String loc = ss.getSelection().toString();
-			File file = new File(loc);
-			
-			if (file.getName().endsWith(".txt")) {
-				try {
-					styledText.setText(new Scanner(file).useDelimiter("\\A").next());
-				} catch (IOException e) {
-					MessageDialog.openError(parent.getShell(), "Error opening file", "File " + file.getName() + " could not be opened.");
-				}
-			}
-			
-			styledText.addFocusListener(new FocusListener(){
-				@Override
-				public void focusGained(FocusEvent e) {
-					MPart mp = (MPart) stacks.get(3).getChildren().get(0);
-					OutlineView olv = (OutlineView) mp.getObject();
-					olv.getText().setText("File Name : " + file.getName() + "\nFile Size : " + file.length() + " Bytes");
-				}
-				@Override
-				public void focusLost(FocusEvent e) {
-				}
-			});
+		String loc = ss.getSelection().toString();
+		File file = new File(loc);
+	
+		try {
+			styledText.setText(new Scanner(file).useDelimiter("\\A").next());
+		} catch (IOException e) {
+			MessageDialog.openError(parent.getShell(), "Error opening file", "File " + file.getName() + " could not be opened.");
 		}
+		
+		styledText.addFocusListener(new FocusListener(){
+			@Override
+			public void focusGained(FocusEvent e) {
+				MPart mp = (MPart) stacks.get(3).getChildren().get(0);
+				OutlineView olv = (OutlineView) mp.getObject();
+				olv.getText().setText("File Name : " + file.getName() + "\nFile Size : " + file.length() + " Bytes");
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+			}
+		});
+		
+		
 	}
 
 	@Focus

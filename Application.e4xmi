@@ -39,12 +39,16 @@
         <children xsi:type="menu:HandledToolItem" xmi:id="_b2OCgCwmEeWr6p7rTcQrag" elementId="" label="About" iconURI="platform:/plugin/FileBrowser_e4/icons/sample.png" command="_9cNzoCwkEeWr6p7rTcQrag"/>
       </children>
     </trimBars>
+    <trimBars xmi:id="_yg3xUC6eEeWDF782k6eGGg" elementId="" side="Bottom">
+      <children xsi:type="menu:ToolControl" xmi:id="_o7m4gC6kEeWDF782k6eGGg" elementId="" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Utils.ToolControl"/>
+    </trimBars>
   </children>
   <handlers xmi:id="_zjZkMCtPEeWy090xpWpcVA" elementId="Exit" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.ExitHandler" command="_8wtBQCtPEeWy090xpWpcVA"/>
   <handlers xmi:id="_phbTgCtQEeWy090xpWpcVA" elementId="Open" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.OpenHandler" command="_mmcwICtQEeWy090xpWpcVA"/>
   <handlers xmi:id="_mJN-wCuWEeWy090xpWpcVA" elementId="filebrowser_e4.handler.Expand" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.ExpandHandler" command="_kiDMoCuWEeWy090xpWpcVA"/>
   <handlers xmi:id="_JKODYCuXEeWy090xpWpcVA" elementId="filebrowser_e4.handler.Collapse" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.CollapseHandler" command="_GAFpsCuXEeWy090xpWpcVA"/>
   <handlers xmi:id="_-9TL4CwkEeWr6p7rTcQrag" elementId="filebrowser_e4.handler.About" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.AboutHandler" command="_9cNzoCwkEeWr6p7rTcQrag"/>
+  <handlers xmi:id="_rVYmwC65EeW5d87YcpRbUw" elementId="filebrowser_e4.handler.Test" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Handlers.TestHandler" command="_uDLCsC65EeW5d87YcpRbUw"/>
   <bindingTables xmi:id="_b5wRMCuCEeWy090xpWpcVA" elementId="filebrowser_e4.bindingtable.Default" bindingContext="_AQyKECuCEeWy090xpWpcVA">
     <bindings xmi:id="_hqm1gCuCEeWy090xpWpcVA" elementId="filebrowser_e4.keybinding.Exit" keySequence="M1+X" command="_8wtBQCtPEeWy090xpWpcVA">
       <tags>type:user</tags>
@@ -59,6 +63,7 @@
   <commands xmi:id="_kiDMoCuWEeWy090xpWpcVA" elementId="filebrowser_e4.command.Expand" commandName="Expand"/>
   <commands xmi:id="_GAFpsCuXEeWy090xpWpcVA" elementId="filebrowser_e4.command.Collapse" commandName="Collapse"/>
   <commands xmi:id="_9cNzoCwkEeWr6p7rTcQrag" elementId="filebrowser_e4.command.About" commandName="About"/>
+  <commands xmi:id="_uDLCsC65EeW5d87YcpRbUw" elementId="filebrowser_e4.command.Test" commandName="Test"/>
   <addons xmi:id="_-z84YirAEeWTX4slOUTAAw" elementId="org.eclipse.e4.core.commands.service" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_-z84YyrAEeWTX4slOUTAAw" elementId="org.eclipse.e4.ui.contexts.service" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_-z84ZCrAEeWTX4slOUTAAw" elementId="org.eclipse.e4.ui.bindings.service" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>

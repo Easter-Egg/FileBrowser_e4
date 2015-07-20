@@ -16,9 +16,13 @@ public class FileOpen {
 	
 	private String loc;
 	private boolean alreadyPartExisted = false;
+	
 	private MWindow window;
+	
 	private EPartService partService;
+	
 	private EModelService modelService;
+	
 	
 	public FileOpen(ESelectionService ss, EPartService ps, EModelService ms, MWindow w){
 		this.loc = ss.getSelection().toString();
@@ -31,7 +35,7 @@ public class FileOpen {
 	public void open(){
 		File file = new File(loc);
 		List<MPartStack> stacks = modelService.findElements(window, null, MPartStack.class, null);
-		
+	
 		// check parts
 		for(MPart existedPart : partService.getParts()){
 			if(existedPart.getLabel().equals(file.getName())){
@@ -44,6 +48,7 @@ public class FileOpen {
 		}
 		
 		if(!alreadyPartExisted){
+			// open text editor
 			if(file.getName().endsWith(".txt")){
 				MPart part = modelService.createModelElement(MPart.class);
 				part.setLabel(file.getName());
@@ -53,6 +58,7 @@ public class FileOpen {
 				stacks.get(1).getChildren().add(part);
 				partService.showPart(part, PartState.ACTIVATE);
 			}
+			
 			// open image editor
 			else if(file.getName().endsWith(".jpg") || file.getName().endsWith(".png")){
 				MPart part = modelService.createModelElement(MPart.class);

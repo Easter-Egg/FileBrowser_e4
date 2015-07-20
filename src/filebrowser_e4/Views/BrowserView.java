@@ -6,8 +6,8 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import javax.inject.Named;
 
+import org.eclipse.e4.core.services.events.IEventBroker;
 import org.eclipse.e4.ui.di.Focus;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.workbench.modeling.EModelService;
@@ -35,49 +35,56 @@ import filebrowser_e4.Utils.FileOpen;
 public class BrowserView {
 	
 	private Text location;
-	private Tree t;
-	private TreeViewer tv;
+	private Tree tree;
+	private TreeViewer treeViewer;
+	private File file = null;
+
+	@Inject
+	private IEventBroker eventBroker;
 	
 	@Inject
-	private ESelectionService ss;
+	private ESelectionService selectionService;
+	
 	@Inject
-	private EPartService ps;
+	private EPartService partService;
+	
 	@Inject
-	private EModelService ms;
+	private EModelService modelService;
+	
 	@Inject
-	private MWindow w;
+	private MWindow window;
 
 	@Inject
 	public BrowserView(){
 		
 	}
 	
-	private IDoubleClickListener l = new IDoubleClickListener() {
+	private IDoubleClickListener doubleClickListener = new IDoubleClickListener() {
 		@Override
 		public void doubleClick(DoubleClickEvent event) {
 			Object first =((IStructuredSelection)event.getSelection()).getFirstElement();
-			ss.setSelection(first);
-			String loc = ss.getSelection().toString();
-			File file = new File(loc);
+			selectionService.setSelection(first);
+			String loc = selectionService.getSelection().toString();
+			file = new File(loc);
 
 			Date dt = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd, H:mm:ss:SSS"); 
 			System.out.println(sdf.format(dt).toString() +  "   >>>>>   " + loc);
 			
 			if (file.isDirectory()) {
-				if(tv.getExpandedState(file))
-					tv.setExpandedState(file, false);
+				if(treeViewer.getExpandedState(file))
+					treeViewer.setExpandedState(file, false);
 				else
-					tv.setExpandedState(file, true);
+					treeViewer.setExpandedState(file, true);
 			} else {
-				FileOpen fo = new FileOpen(ss, ps, ms, w);
+				FileOpen fo = new FileOpen(selectionService, partService, modelService, window);
 				fo.open();
+				eventBroker.send("FILEOPEN", loc);
 			}
-
 		}
 	};
 	
-	private ISelectionChangedListener l2 = new ISelectionChangedListener() {
+	private ISelectionChangedListener selectionChangedListener = new ISelectionChangedListener() {
 		@Override
 		public void selectionChanged(SelectionChangedEvent e) {
 			location.setText(e.getSelection().toString());
@@ -92,28 +99,28 @@ public class BrowserView {
 		location.setMessage("print double clicked file location");
 		location.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
-		t = new Tree(parent, SWT.V_SCROLL | SWT.H_SCROLL);
+		tree = new Tree(parent, SWT.V_SCROLL | SWT.H_SCROLL);
 
-		int curStyle = OS.GetWindowLong(t.handle, OS.GWL_STYLE);
+		int curStyle = OS.GetWindowLong(tree.handle, OS.GWL_STYLE);
 		int newStyle = curStyle | OS.TVS_HASLINES;
-		OS.SetWindowLong(t.handle, OS.GWL_STYLE, newStyle);
+		OS.SetWindowLong(tree.handle, OS.GWL_STYLE, newStyle);
 		
-		tv = new TreeViewer(t);
-		tv.setContentProvider(new FTCP());
-		tv.setLabelProvider(new FTLP());
-		tv.setInput(File.listRoots());
-		tv.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
+		treeViewer = new TreeViewer(tree);
+		treeViewer.setContentProvider(new FTCP());
+		treeViewer.setLabelProvider(new FTLP());
+		treeViewer.setInput(File.listRoots());
+		treeViewer.getTree().setLayoutData(new GridData(GridData.FILL_BOTH));
 		
-		tv.addDoubleClickListener(l);
-		tv.addSelectionChangedListener(l2);
+		treeViewer.addDoubleClickListener(doubleClickListener);
+		treeViewer.addSelectionChangedListener(selectionChangedListener);
 	}
 
 	@Focus
 	public void setFocus() {
-		tv.getTree().setFocus();
+		treeViewer.getTree().setFocus();
 	}
 
 	public TreeViewer getTreeViewer(){
-		return tv;
+		return treeViewer;
 	}
 }
