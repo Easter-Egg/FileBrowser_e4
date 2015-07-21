@@ -29,8 +29,8 @@ public class ConsoleView {
 		parent.setLayout(new GridLayout(1, true));
 		text = new Text(parent, SWT.READ_ONLY | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL | SWT.BORDER);
 		GridData gd_text = new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1);
-		gd_text.widthHint = 94;
 		text.setLayoutData(gd_text);
+
 		OutputStream out = new OutputStream(){
 			@Override
 			public void write(int i) throws IOException {

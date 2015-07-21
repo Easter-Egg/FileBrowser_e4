@@ -20,6 +20,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 
 import filebrowser_e4.Views.OutlineView;
@@ -35,6 +36,9 @@ public class TextEditor {
 
 	@Inject
 	private ESelectionService ss;
+	
+
+
 
 	@Inject
 	public TextEditor() {
@@ -45,7 +49,9 @@ public class TextEditor {
 	@PostConstruct
 	public void postConstruct(Composite parent) {
 		List<MPartStack> stacks = ms.findElements(window, null, MPartStack.class, null);
+
 		styledText = new StyledText(parent, SWT.BORDER | SWT.V_SCROLL | SWT.H_SCROLL);
+		styledText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 		String loc = ss.getSelection().toString();
 		File file = new File(loc);
 	

@@ -15,8 +15,8 @@
           </children>
           <children xsi:type="basic:PartSashContainer" xmi:id="_12wFECuKEeWy090xpWpcVA" elementId="" containerData="8" selectedElement="_o2wusCrIEeWTX4slOUTAAw">
             <children xsi:type="basic:PartStack" xmi:id="_o2wusCrIEeWTX4slOUTAAw" elementId="" containerData="8"/>
-            <children xsi:type="basic:PartStack" xmi:id="_3-jTgCuUEeWy090xpWpcVA" elementId="" containerData="2" selectedElement="_6BhcYCuKEeWy090xpWpcVA">
-              <children xsi:type="basic:Part" xmi:id="_6BhcYCuKEeWy090xpWpcVA" elementId="" containerData="" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Views.ConsoleView" label="Console"/>
+            <children xsi:type="basic:PartStack" xmi:id="_3-jTgCuUEeWy090xpWpcVA" elementId="" containerData="2">
+              <children xsi:type="basic:Part" xmi:id="_UOcF0C9oEeWkALNnvw5jsQ" elementId="" contributionURI="bundleclass://FileBrowser_e4/filebrowser_e4.Views.ConsoleView" label="Console"/>
             </children>
           </children>
           <children xsi:type="basic:PartStack" xmi:id="_38WGUCuPEeWy090xpWpcVA" elementId="" containerData="2" selectedElement="_cQ3TMCuOEeWy090xpWpcVA">
@@ -34,6 +34,14 @@
         <children xsi:type="menu:HandledMenuItem" xmi:id="_winJMCtOEeWy090xpWpcVA" elementId="" label="About" command="_9cNzoCwkEeWr6p7rTcQrag"/>
       </children>
     </mainMenu>
+    <sharedElements xsi:type="basic:Part" xmi:id="_gZqCUC9kEeWkALNnvw5jsQ" elementId="org.eclipse.ui.console.ConsoleView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Console" iconURI="" closeable="true">
+      <tags>View</tags>
+      <tags>categoryTag:org.eclipse.ui</tags>
+      <menus xmi:id="_gZqCUS9kEeWkALNnvw5jsQ" elementId="org.eclipse.ui.console.ConsoleView">
+        <tags>ViewMenu</tags>
+      </menus>
+      <toolbar xmi:id="_gZqCUi9kEeWkALNnvw5jsQ" elementId="org.eclipse.ui.console.ConsoleView"/>
+    </sharedElements>
     <trimBars xmi:id="_aKYy0CwmEeWr6p7rTcQrag" elementId="">
       <children xsi:type="menu:ToolBar" xmi:id="_apr98CwmEeWr6p7rTcQrag" elementId="">
         <children xsi:type="menu:HandledToolItem" xmi:id="_b2OCgCwmEeWr6p7rTcQrag" elementId="" label="About" iconURI="platform:/plugin/FileBrowser_e4/icons/sample.png" command="_9cNzoCwkEeWr6p7rTcQrag"/>

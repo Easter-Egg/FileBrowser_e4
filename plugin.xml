@@ -17,5 +17,12 @@
          </property>
       </product>
    </extension>
+   <extension
+         point="org.eclipse.ui.console.consoleFactories">
+      <consoleFactory
+            class="filebrowser_e4.Utils.E4_ConsoleFactory"
+            label="label">
+      </consoleFactory>
+   </extension>
 
 </plugin>

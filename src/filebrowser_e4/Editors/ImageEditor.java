@@ -15,16 +15,21 @@ import org.eclipse.e4.ui.workbench.modeling.ESelectionService;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ScrollBar;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ToolItem;
 
 import filebrowser_e4.Views.OutlineView;
 
@@ -50,6 +55,30 @@ public class ImageEditor {
 
 	@PostConstruct
 	public void postConstruct(Composite parent) {
+		
+		parent.setLayout(new GridLayout(1, false));
+		
+		ToolBar toolBar = new ToolBar(parent, SWT.FLAT | SWT.RIGHT);
+		toolBar.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
+		ToolItem tltmNewItem = new ToolItem(toolBar, SWT.NONE);
+		tltmNewItem.addSelectionListener(new SelectionListener(){
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				System.out.println(">>>>> width : " + image.getBounds().width + ", height : " + image.getBounds().height + " (canvas : " + canvas.getClientArea().width + "x" + canvas.getClientArea().height +")");
+			}
+
+			@Override
+			public void widgetDefaultSelected(SelectionEvent e) {
+								
+			}
+			
+		});
+		tltmNewItem.setWidth(16);
+		tltmNewItem.setText("INFO");
+		
+
 		List<MPartStack> stacks = ms.findElements(window, null, MPartStack.class, null);
 		String loc = ss.getSelection().toString();
 	
